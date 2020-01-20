@@ -47,3 +47,15 @@ TagManager:
   - name: Floor
     uniqueID: 3702922831
     locked: 0
+  - name: Collectibles
+    uniqueID: 1824759315
+    locked: 0
+  - name: Obstacles
+    uniqueID: 1473120169
+    locked: 0
+  - name: Player
+    uniqueID: 4144719273
+    locked: 0
+  - name: Victory
+    uniqueID: 1469615239
+    locked: 0
