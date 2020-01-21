@@ -10,7 +10,7 @@
           <e p="Players" t="Include">
             <e p="PlayerController.cs" t="Include" />
           </e>
-          <e p="Wold" t="Include">
+          <e p="World" t="Include">
             <e p="CheckOutOfMap.cs" t="Include" />
             <e p="ObjectCollector.cs" t="Include" />
           </e>

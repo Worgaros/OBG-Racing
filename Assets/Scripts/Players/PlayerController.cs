@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     
     Vector2 direction;
     [SerializeField] float speed;
-    const float inverse = -1;
+    const float inverse = -1.0f;
     bool isMoving = false;
+    float playerStartPos = 0.0f;
 
     bool isOnFloor = true;
     
