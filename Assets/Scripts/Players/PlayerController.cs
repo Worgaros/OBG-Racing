@@ -31,4 +31,12 @@ public class PlayerController : MonoBehaviour
         
         body.velocity = direction;
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.CompareTag("Floor"))
+        {
+            Debug.Log("Out");
+        }
+    }
 }
