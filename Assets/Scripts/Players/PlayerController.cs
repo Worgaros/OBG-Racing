@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +9,10 @@ public class PlayerController : MonoBehaviour
     
     Vector2 direction;
     [SerializeField] float speed;
-    [SerializeField] float inverse = -1;
-    [SerializeField] private bool isMoving = false;
+    const float inverse = -1;
+    bool isMoving = false;
+
+    bool isOnFloor = true;
     
     void Start()
     {
@@ -17,6 +20,11 @@ public class PlayerController : MonoBehaviour
     }
     
     void Update()
+    {
+        PlayerMovements();
+    }
+
+    void PlayerMovements()
     {
         if (Input.GetButtonDown("ChangeDirection") && !isMoving)
         {
@@ -27,16 +35,15 @@ public class PlayerController : MonoBehaviour
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
         }
-        
-        
+
         body.velocity = direction;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.CompareTag("Floor"))
-        {
-            Debug.Log("Out");
-        }
-    }
+//    private void OnTriggerExit2D(Collider2D other)
+//    {
+//        if(other.CompareTag("Floor"))
+//        {
+//            Debug.Log("Out");
+//        }
+//    }
 }
