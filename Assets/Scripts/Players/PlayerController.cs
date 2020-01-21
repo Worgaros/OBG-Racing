@@ -6,15 +6,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D body;
+    SpriteRenderer spriteRenderer;
     
     Vector2 direction;
     [SerializeField] float speed;
     const float inverse = -1.0f;
     bool isMoving = false;
-    float playerStartPos = 0.0f;
 
     bool isOnFloor = true;
     
+    Quaternion theRotation;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -35,16 +37,9 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonDown("ChangeDirection") && isMoving)
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
+            transform.Rotate (Vector3.forward * -90);
         }
 
         body.velocity = direction;
     }
-
-//    private void OnTriggerExit2D(Collider2D other)
-//    {
-//        if(other.CompareTag("Floor"))
-//        {
-//            Debug.Log("Out");
-//        }
-//    }
 }
