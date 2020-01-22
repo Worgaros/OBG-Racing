@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour
             direction = new Vector2( speed * inverse, speed);
             isMoving = true;
         }
-        else if (Input.GetButtonDown("ChangeDirection") && isMoving && isLookingLeft)
+        else if (Input.GetButtonDown("ChangeDirection") && isMoving && isLookingLeft && Time.timeScale > 0)
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
             transform.Rotate (Vector3.forward * -90);
             isLookingLeft = false;
         }
-        else if (Input.GetButtonDown("ChangeDirection") && isMoving && !isLookingLeft)
+        else if (Input.GetButtonDown("ChangeDirection") && isMoving && !isLookingLeft && Time.timeScale > 0)
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
             transform.Rotate (Vector3.forward * 90);
