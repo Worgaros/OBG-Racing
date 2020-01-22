@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     bool isMoving = false;
 
     bool isOnFloor = true;
-    
-    Quaternion theRotation;
+
+    bool isLookingLeft = true;
 
     void Start()
     {
@@ -34,10 +34,17 @@ public class PlayerController : MonoBehaviour
             direction = new Vector2( speed * inverse, speed);
             isMoving = true;
         }
-        else if (Input.GetButtonDown("ChangeDirection") && isMoving)
+        else if (Input.GetButtonDown("ChangeDirection") && isMoving && isLookingLeft)
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
             transform.Rotate (Vector3.forward * -90);
+            isLookingLeft = false;
+        }
+        else if (Input.GetButtonDown("ChangeDirection") && isMoving && !isLookingLeft)
+        {
+            direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
+            transform.Rotate (Vector3.forward * 90);
+            isLookingLeft = true;
         }
 
         body.velocity = direction;

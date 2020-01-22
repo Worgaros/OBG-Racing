@@ -19,6 +19,7 @@ public class ObjectCollector : MonoBehaviour
         else if (gameObject.CompareTag("Cup"))
         {
             Destroy(gameObject);
+            Time.timeScale = 0;
         }
     }
 }
