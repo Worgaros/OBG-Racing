@@ -7,8 +7,12 @@ public class ObjectCollector : MonoBehaviour
 {
     [SerializeField] GameObject player;
     Rigidbody2D playerBody;
+
+    int coinsNumber = 0;
     
     [SerializeField] GameObject victoryPanel;
+    
+    [SerializeField] AudioSource coinSound;
 
     private void Start()
     {
@@ -19,6 +23,8 @@ public class ObjectCollector : MonoBehaviour
     {
         if (gameObject.CompareTag("Coin"))
         {
+            coinsNumber++;
+            coinSound.Play();
             Destroy(gameObject);
         }
         

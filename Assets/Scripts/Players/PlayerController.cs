@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     bool isOnFloor = true;
 
     [SerializeField] GameObject controlsPanel;
+    
+    [SerializeField] AudioSource tireSound;
+    [SerializeField] AudioSource engineSound;
 
     void Start()
     {
@@ -26,6 +29,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovements();
+
+        if (Time.timeScale == 0)
+        {
+            engineSound.Stop();
+        }
     }
 
     void PlayerMovements()
@@ -35,18 +43,25 @@ public class PlayerController : MonoBehaviour
             direction = new Vector2( speed * inverse, speed);
             isMoving = true;
             controlsPanel.SetActive(false);
+            engineSound.Play();
         }
         else if (Input.GetButtonDown("ChangeDirection") && isMoving && isLookingLeft && Time.timeScale > 0)
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
             transform.Rotate (Vector3.forward * -90);
             isLookingLeft = false;
+            tireSound.Play();
         }
         else if (Input.GetButtonDown("ChangeDirection") && isMoving && !isLookingLeft && Time.timeScale > 0)
         {
             direction = new Vector2(body.velocity.x * inverse, body.velocity.y);
             transform.Rotate (Vector3.forward * 90);
             isLookingLeft = true;
+            tireSound.Play();
+        }
+        else if (Input.GetButtonDown("ChangeDirection") && Time.timeScale == 0)
+        {
+            Application.Quit();
         }
 
         body.velocity = direction;
