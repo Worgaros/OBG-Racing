@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
     const float inverse = -1.0f;
     bool isMoving = false;
-
+    bool isLookingLeft = true;
+    
     bool isOnFloor = true;
 
-    bool isLookingLeft = true;
+    [SerializeField] GameObject controlsPanel;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             direction = new Vector2( speed * inverse, speed);
             isMoving = true;
+            controlsPanel.SetActive(false);
         }
         else if (Input.GetButtonDown("ChangeDirection") && isMoving && isLookingLeft && Time.timeScale > 0)
         {

@@ -7,6 +7,8 @@ public class ObjectCollector : MonoBehaviour
 {
     [SerializeField] GameObject player;
     Rigidbody2D playerBody;
+    
+    [SerializeField] GameObject victoryPanel;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class ObjectCollector : MonoBehaviour
         {
             Destroy(gameObject);
             Time.timeScale = 0;
+            victoryPanel.SetActive(true);
         }
     }
 }
